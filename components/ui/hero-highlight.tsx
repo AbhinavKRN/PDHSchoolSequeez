@@ -15,7 +15,6 @@ export const HeroHighlight = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Assigning initial values to left and top variables
   let left = 0;
   let top = 0;
 
@@ -25,7 +24,6 @@ export const HeroHighlight = ({
     clientY,
   }: React.MouseEvent<HTMLDivElement>) {
     if (!currentTarget) return;
-    // Reassigning the left and top values based on the mouse position
     ({ left, top } = currentTarget.getBoundingClientRect());
 
     mouseX.set(clientX - left);
@@ -40,20 +38,20 @@ export const HeroHighlight = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800  pointer-events-none" />
+      <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 pointer-events-none" />
       <motion.div
-        className="pointer-events-none bg-dot-thick-indigo-500 dark:bg-dot-thick-indigo-500   absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none bg-dot-thick-white-500 dark:bg-dot-thick-blue-100 absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           WebkitMaskImage: useMotionTemplate`
             radial-gradient(
-              200px circle at ${mouseX}px ${mouseY}px,
+              300px circle at ${mouseX}px ${mouseY}px,
               black 0%,
               transparent 100%
             )
           `,
           maskImage: useMotionTemplate`
             radial-gradient(
-              200px circle at ${mouseX}px ${mouseY}px,
+              300px circle at ${mouseX}px ${mouseY}px,
               black 0%,
               transparent 100%
             )
@@ -92,8 +90,8 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500`,
-        className,
+        `relative inline-block pb-1 px-1 rounded-lg bg-gradient-to-r from-black to-blue-500 via-green-500 dark:from-black dark:to-blue-700 dark:via-green-800`,
+        className
       )}
     >
       {children}
