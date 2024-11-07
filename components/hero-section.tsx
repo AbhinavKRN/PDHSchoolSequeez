@@ -2,12 +2,38 @@
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "./ui/hero-highlight";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+import img1 from "@/public/Vector.svg";
 
 export function HeroHighlightDemo() {
   const router = useRouter();
 
   return (
     <HeroHighlight>
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.8,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.4, 0.0, 0.2, 1],
+          delay: 0.5,
+        }}
+        className="mt-12 flex justify-center"
+      >
+        <Image
+          src={img1}
+          alt="Vector Illustration"
+          className="rounded-lg shadow-lg w-28 h-28"
+        />
+      </motion.div>
+
       <motion.h1
         initial={{
           opacity: 0,
@@ -33,6 +59,7 @@ export function HeroHighlightDemo() {
           Unleash Your Potential, Join Today!
         </Highlight>
       </motion.h1>
+
       <motion.div
         initial={{
           opacity: 0,
